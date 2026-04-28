@@ -1,115 +1,607 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Card Deals</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Underpriced Baseball Card Finds</title>
   <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-2: #1f2937;
+      --line: #334155;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --green: #22c55e;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+      --blue: #38bdf8;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.28);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
       margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 20px;
     }
 
-    h1 {
-      margin-bottom: 5px;
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
     }
 
-    .updated {
-      color: #94a3b8;
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      color: #e2e8f0;
+      font-size: 16px;
+      line-height: 1.5;
+      max-width: 760px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 12px;
+      margin: 18px 0 22px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #dbeafe;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .toolbar {
+      background: rgba(15, 23, 42, .85);
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr auto;
+      gap: 10px;
+      position: sticky;
+      top: 10px;
+      z-index: 10;
       margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    button {
+      cursor: pointer;
+      font-weight: 700;
+      background: #1d4ed8;
+      border-color: #2563eb;
+    }
+
+    button:hover { filter: brightness(1.08); }
+
+    .results-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
     }
 
     .card {
-      background: #1e293b;
-      border-radius: 10px;
-      padding: 15px;
+      background: linear-gradient(180deg, rgba(31,41,55,.98), rgba(15,23,42,.98));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .img-wrap {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: #0b1220;
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #052e16;
+      background: #86efac;
+    }
+
+    .badge.warn {
+      color: #451a03;
+      background: #fcd34d;
+    }
+
+    .content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
     }
 
     .title {
-      font-weight: bold;
-      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0;
     }
 
-    .price {
-      font-size: 18px;
-      color: #22c55e;
-      margin-bottom: 10px;
+    .sub {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+      margin: 0;
     }
 
-    button {
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 10px;
+    }
+
+    .price-box {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
       padding: 10px;
-      border: none;
-      border-radius: 6px;
-      background: #2563eb;
-      color: white;
-      cursor: pointer;
     }
 
-    button:hover {
-      background: #1d4ed8;
-    }
-
-    .affiliate {
+    .price-label {
+      color: var(--muted);
       font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .price-value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .good { color: var(--green); }
+    .bad { color: var(--red); }
+    .okay { color: var(--yellow); }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      background: rgba(56,189,248,.12);
+      color: #bae6fd;
+      border: 1px solid rgba(56,189,248,.22);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--line);
+    }
+
+    .footer {
       color: #94a3b8;
-      margin-top: 5px;
+      font-size: 13px;
+      text-align: center;
+      padding: 28px 10px 10px;
+    }
+
+    .empty {
+      padding: 28px;
+      border: 1px dashed rgba(255,255,255,.18);
+      border-radius: 18px;
+      text-align: center;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+    }
+
+    @media (max-width: 980px) {
+      .grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .toolbar { grid-template-columns: 1fr 1fr; }
+      .toolbar > *:first-child { grid-column: 1 / -1; }
+      .toolbar button { grid-column: 1 / -1; }
+      .stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 12px; }
+      .grid { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .hero { padding: 18px; border-radius: 18px; }
+      .toolbar { padding: 10px; }
+      .actions { flex-direction: column; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat-value { font-size: 20px; }
     }
   </style>
 </head>
-
 <body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Underpriced Baseball Card Finds</h1>
+      <p>
+        Updated card deals pulled from eBay. These are cards that appear priced below my estimated value.
+        Tap any card to view the live listing.
+      </p>
 
-  <h1>🔥 Card Deals</h1>
-  <div class="updated" id="updated"></div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-label">Cards Shown</div>
+          <div class="stat-value" id="stat-count">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Avg. Discount</div>
+          <div class="stat-value" id="stat-discount">0%</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Best Dollar Gap</div>
+          <div class="stat-value" id="stat-gap">$0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last Updated</div>
+          <div class="stat-value" id="stat-updated">--</div>
+        </div>
+      </div>
+    </section>
 
-  <div class="grid" id="grid"></div>
+    <section class="toolbar">
+      <input type="text" id="searchInput" placeholder="Search player, set, year, grade..." />
 
-  <!-- ✅ THIS IS THE IMPORTANT PART -->
-  <script src="data.js"></script>
+      <select id="gradeFilter">
+        <option value="">All Grades</option>
+      </select>
 
-  <!-- ✅ YOUR MAIN SCRIPT -->
+      <select id="sortSelect">
+        <option value="discount-desc">Sort: Biggest % Discount</option>
+        <option value="gap-desc">Sort: Biggest $ Gap</option>
+        <option value="price-asc">Sort: Lowest Price</option>
+        <option value="price-desc">Sort: Highest Price</option>
+        <option value="value-desc">Sort: Highest Est. Value</option>
+      </select>
+
+      <select id="dealFilter">
+        <option value="all">All Cards</option>
+        <option value="hot">Hot Deals Only</option>
+        <option value="solid">Solid Deals+</option>
+      </select>
+
+      <button id="resetBtn">Reset</button>
+    </section>
+
+    <div class="results-row">
+      <div id="resultsText">Loading cards...</div>
+      <div>Static HTML app template</div>
+    </div>
+
+    <main id="cardGrid" class="grid"></main>
+
+    <div class="footer">
+      This page is for informational purposes only. Prices can change quickly on eBay.
+    </div>
+  </div>
+
   <script>
-    function renderCards() {
-      const grid = document.getElementById("grid");
-      const updated = document.getElementById("updated");
+    /*
+      =====================================================
+      MAKE.COM / GOOGLE SHEETS FRIENDLY DATA BLOCK
+      =====================================================
+      Replace ONLY the data inside APP_DATA.
+      Keep the same variable name.
+      Your automation can overwrite this whole block each run.
+    */
 
-      // show last updated
-      updated.innerText = "Last Updated: " + APP_DATA.updated_at;
+    const APP_DATA = {
+      updated_at: "2026-04-21 10:15 PM ET",
+      cards: [
+        {
+          title: "1957 Topps Hank Aaron PSA 6",
+          player: "Hank Aaron",
+          year: 1957,
+          set: "Topps",
+          grade: "PSA 6",
+          ebay_price: 289.99,
+          estimated_value: 365.00,
+          highest_sale: 410.00,
+          time_left: "2h 15m",
+          ebay_url: "https://www.ebay.com/",
+          image_url: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80"
+        },
+        {
+          title: "1984 Topps Don Mattingly PSA 8",
+          player: "Don Mattingly",
+          year: 1984,
+          set: "Topps",
+          grade: "PSA 8",
+          ebay_price: 43.50,
+          estimated_value: 61.00,
+          highest_sale: 72.00,
+          time_left: "5h 40m",
+          ebay_url: "https://www.ebay.com/",
+          image_url: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=1200&q=80"
+        }
+      ]
+    };
 
-      grid.innerHTML = "";
+    const searchInput = document.getElementById('searchInput');
+    const gradeFilter = document.getElementById('gradeFilter');
+    const sortSelect = document.getElementById('sortSelect');
+    const dealFilter = document.getElementById('dealFilter');
+    const resetBtn = document.getElementById('resetBtn');
+    const cardGrid = document.getElementById('cardGrid');
+    const resultsText = document.getElementById('resultsText');
 
-      APP_DATA.cards.forEach(card => {
-        const div = document.createElement("div");
-        div.className = "card";
+    const money = (num) => `$${Number(num || 0).toFixed(2)}`;
 
-        div.innerHTML = `
-          <div class="title">${card.title}</div>
-          <div class="price">$${card.ebay_price}</div>
-          <a href="${card.ebay_url || '#'}" target="_blank">
-            <button>View on eBay</button>
-          </a>
-          <div class="affiliate">
-            I am an Ebay affiliate, I make commissions on Sales
-          </div>
-        `;
+    function enrichCard(card) {
+      const gap = Number(card.estimated_value || 0) - Number(card.ebay_price || 0);
+      const discountPct = card.estimated_value > 0 ? (gap / card.estimated_value) * 100 : 0;
 
-        grid.appendChild(div);
-      });
+      let tier = 'solid';
+      if (discountPct >= 25 || gap >= 50) tier = 'hot';
+      else if (discountPct < 10 && gap < 20) tier = 'watch';
+
+      return {
+        ...card,
+        gap,
+        discountPct,
+        tier
+      };
     }
 
-    // run after page loads
-    renderCards();
-  </script>
+    function escapeHtml(str) {
+      return String(str ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
 
+    function buildGradeFilter(cards) {
+      const grades = [...new Set(cards.map(c => c.grade).filter(Boolean))].sort();
+      gradeFilter.innerHTML = '<option value="">All Grades</option>' + grades
+        .map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`)
+        .join('');
+    }
+
+    function getFilteredCards() {
+      const q = searchInput.value.trim().toLowerCase();
+      const grade = gradeFilter.value;
+      const sort = sortSelect.value;
+      const deal = dealFilter.value;
+
+      let cards = APP_DATA.cards.map(enrichCard);
+
+      if (q) {
+        cards = cards.filter(card => {
+          const haystack = [card.title, card.player, card.set, card.grade, card.year]
+            .join(' ')
+            .toLowerCase();
+          return haystack.includes(q);
+        });
+      }
+
+      if (grade) {
+        cards = cards.filter(card => card.grade === grade);
+      }
+
+      if (deal === 'hot') {
+        cards = cards.filter(card => card.tier === 'hot');
+      } else if (deal === 'solid') {
+        cards = cards.filter(card => card.tier === 'hot' || card.tier === 'solid');
+      }
+
+      cards.sort((a, b) => {
+        switch (sort) {
+          case 'gap-desc': return b.gap - a.gap;
+          case 'price-asc': return a.ebay_price - b.ebay_price;
+          case 'price-desc': return b.ebay_price - a.ebay_price;
+          case 'value-desc': return b.estimated_value - a.estimated_value;
+          case 'discount-desc':
+          default:
+            return b.discountPct - a.discountPct;
+        }
+      });
+
+      return cards;
+    }
+
+    function renderStats(cards) {
+      document.getElementById('stat-count').textContent = cards.length;
+      document.getElementById('stat-updated').textContent = APP_DATA.updated_at || '--';
+
+      if (!cards.length) {
+        document.getElementById('stat-discount').textContent = '0%';
+        document.getElementById('stat-gap').textContent = '$0';
+        return;
+      }
+
+      const avgDiscount = cards.reduce((sum, c) => sum + c.discountPct, 0) / cards.length;
+      const bestGap = Math.max(...cards.map(c => c.gap));
+
+      document.getElementById('stat-discount').textContent = `${avgDiscount.toFixed(1)}%`;
+      document.getElementById('stat-gap').textContent = money(bestGap);
+    }
+
+    function tierBadge(card) {
+      if (card.tier === 'hot') return '<div class="badge">HOT DEAL</div>';
+      if (card.tier === 'solid') return '<div class="badge warn">SOLID DEAL</div>';
+      return '';
+    }
+
+    function renderCards() {
+      const cards = getFilteredCards();
+      renderStats(cards);
+      resultsText.textContent = `${cards.length} card${cards.length === 1 ? '' : 's'} shown`;
+
+      if (!cards.length) {
+        cardGrid.innerHTML = '<div class="empty">No cards match your current filters.</div>';
+        return;
+      }
+
+      cardGrid.innerHTML = cards.map(card => `
+        <article class="card">
+          <div class="img-wrap">
+            <img src="${escapeHtml(card.image_url)}" alt="${escapeHtml(card.title)}" loading="lazy" />
+            ${tierBadge(card)}
+          </div>
+
+          <div class="content">
+            <h2 class="title">${escapeHtml(card.title)}</h2>
+            <p class="sub">${escapeHtml(card.player)} • ${escapeHtml(String(card.year))} ${escapeHtml(card.set)} • ${escapeHtml(card.grade)}</p>
+
+            <div class="price-grid">
+              <div class="price-box">
+                <div class="price-label">eBay Price</div>
+                <div class="price-value">${money(card.ebay_price)}</div>
+              </div>
+              <div class="price-box">
+                <div class="price-label">Est. Value</div>
+                <div class="price-value">${money(card.estimated_value)}</div>
+              </div>
+              <div class="price-box">
+                <div class="price-label">Highest Sale</div>
+                <div class="price-value">${money(card.highest_sale || 0)}</div>
+              </div>
+            </div>
+
+            <div class="price-grid" style="margin-top:6px;">
+              <div class="price-box">
+                <div class="price-label">Discount</div>
+                <div class="price-value ${card.discountPct >= 15 ? 'good' : card.discountPct >= 8 ? 'okay' : 'bad'}">${card.discountPct.toFixed(1)}%</div>
+              </div>
+              <div class="price-box">
+                <div class="price-label">Gap</div>
+                <div class="price-value">${money(card.gap)}</div>
+              </div>
+              <div class="price-box">
+                <div class="price-label">Time Left</div>
+                <div class="price-value">${escapeHtml(card.time_left || '--')}</div>
+              </div>
+            </div>
+                <div class="price-value">${money(card.ebay_price)}</div>
+              </div>
+              <div class="price-box">
+                <div class="price-label">Est. Value</div>
+                <div class="price-value">${money(card.estimated_value)}</div>
+              </div>
+              <div class="price-box">
+                <div class="price-label">Discount</div>
+                <div class="price-value ${card.discountPct >= 15 ? 'good' : card.discountPct >= 8 ? 'okay' : 'bad'}">${card.discountPct.toFixed(1)}%</div>
+              </div>
+            </div>
+
+            <div class="meta">
+              <span class="pill">Gap: ${money(card.gap)}</span>
+              <span class="pill">Grade: ${escapeHtml(card.grade)}</span>
+            </div>
+
+            <div class="actions">
+              <a href="${escapeHtml(card.ebay_url)}" target="_blank" rel="noopener noreferrer">
+                <button>View on eBay</button>
+              </a>
+            </div>
+
+            <div style="font-size:12px; color:#94a3b8; margin-top:6px;">
+              I am an Ebay affiliate, I make commissions on Sales
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function resetFilters() {
+      searchInput.value = '';
+      gradeFilter.value = '';
+      sortSelect.value = 'discount-desc';
+      dealFilter.value = 'all';
+      renderCards();
+    }
+
+    buildGradeFilter(APP_DATA.cards);
+    renderCards();
+
+    searchInput.addEventListener('input', renderCards);
+    gradeFilter.addEventListener('change', renderCards);
+    sortSelect.addEventListener('change', renderCards);
+    dealFilter.addEventListener('change', renderCards);
+    resetBtn.addEventListener('click', resetFilters);
+  </script>
 </body>
 </html>
