@@ -135,7 +135,7 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 16px;
+      gap: 80px;
     }
 
     .card {
@@ -296,7 +296,7 @@
     <section class="hero">
       <h1>Underpriced Baseball Card Finds</h1>
       <p>
-        Updated card deals pulled from eBay. These are cards that appear priced below my estimated value.
+        Updated card deals pulled from eBay. These are cards that appear priced below my estimated value (average from last 90 days).
         Tap any card to view the live listing.
       </p>
 
@@ -366,74 +366,425 @@
       Your automation can overwrite this whole block each run.
     */
 
-   const APP_DATA = {
-  updated_at: "04-27-2026 EST",
+const APP_DATA = {
+  updated_at: "04-29-2026 10:15 PM EST",
   cards: [
    {
-  "title": "1965 Topps #526 Athletics Rookies w/ Jim Catfish Hunter RC Rookie PSA 9 MINT O/C",
-  "player": "Catfish Hunter",
+  "title": "Randy Johnson 1989 Fleer Marlboro Ad Partially Obscured #381 RC Rookie PSA 10",
+  "player": "Randy Johnson",
+  "year": 1989,
+  "set": "fleer",
+  "grade": "PSA 10",
+  "ebay_price": 113.5015,
+  "estimated_value": 541.4375,
+  "highest_sale": 1475,
+  "time_left": "1d 2h left (Thu, 06:47 PM)",
+  "ebay_url": "https://www.ebay.com/itm/147268350617?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=6055960444&hash=item2249e0b299%3Ag%3ACxQAAeSwrIhp5beE&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xALaFqMCKIa7QIcna4R05H%2Fcr2q%2Bo0XsZcK7TMBXar7lQYEH58OzdHtQ%2BD%2B7PGoSqfL1xXCiaSj%2FbHEN%2FCgdu5WjtZN2HlsNFLv5yETk1gR6IYjS8RvdE1Dwrd69QZKP1jRs9RexTCT10n5geOehFDAmZlJzNJyDYTAf7ct6BJNYE7cd7w241iIAgtvu9fAfvPGnjAAVmvZeIrWFn6019%2Fo814YpH5I0D8jIq8dd0FHxq%2F%2BJy5R6YhlYhej2UJSdhxC36QwewLZF4Amyy1MTr%2FGItT7dSHbdqpBSlnexyR%2BUivoOcBYcbVtgrhkwAgHHuZzTsO1AwDrFf6sFTgay%2Bl0B2g81LfPhfaom2jvq9Dcj9TA%2FXaphlmjYnL4Czvlg6M%3D%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/CxQAAeSwrIhp5beE/s-l600.jpg"
+},{
+  "title": "1959 Topps #10 MICKEY MANTLE PSA 2",
+  "player": "Mickey Mantle",
+  "year": 1959,
+  "set": "topps",
+  "grade": "PSA 2",
+  "ebay_price": 133.5015,
+  "estimated_value": 430.5042857,
+  "highest_sale": 801.1,
+  "time_left": "1d left (Thu, 05:00 PM)",
+  "ebay_url": "https://www.ebay.com/itm/406873894033?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=6055971939&hash=item5ebb92ec91%3Ag%3Ad2sAAeSw6z9p4Htv&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xAkhAxBnqIMb5w5%2F%2Bn6OeRiIwy9%2BlNjUyyGGf972Qqa%2BpFFCnB3QHXgoJ6Inmclps0dfOvYI310J77oSZ51KmRGQEEPcC5mCz5EUTcFsy37PTSuLOaqJhukoJv%2FZFcRQzM2lMdXq%2Fd0P%2F3Dw8BTJKvzkAoTlLkyw0%2FHJD24tjOF55sqHIdXfNqDN%2BDMftDL71is9tyV4Q9%2FfTbcG2TRAukRyVA0oVqaz2widJx5117pVR%2BE5oFbnlqq8yo5HN9zLh3v4R1IwwGpHZ8PFjHHg4CRCMnMAnUlqV0zRUQLwrsOD7%2BwaKiZr0y4iCotC%2BwFWqe68aWmWmVxpaeQk4Ah7ZayOX8WMjaITjS4yqa9DJXVZTBkaRMY1X7vE1UqrLZG2t0%3D%7Ctkp%3ABk9SR77J6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/d2sAAeSw6z9p4Htv/s-l500.jpg"
+},{
+  "title": "MICKEY MANTLE 1955 BOWMAN BASEBALL CARD #202 NEW YORK YANKEES PSA 5 EX",
+  "player": "Mickey Mantle",
+  "year": 1955,
+  "set": "bowman",
+  "grade": "PSA 5",
+  "ebay_price": 665.0038,
+  "estimated_value": 1853.142857,
+  "highest_sale": 2027,
+  "time_left": "1d 3h left (Thu, 08:14 PM)",
+  "ebay_url": "https://www.ebay.com/itm/298257652901?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=6055918100&hash=item45718a9ca5%3Ag%3AGHsAAeSw3uFp6s0w&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xCNqFjMduIwjB3gTumtnPqgqoBth4xEQLnvn5IyJ0pDf7BafHUREX8d%2B8idRPdDqV45ZXIDKNb4yOvR%2FQ02IysyI1aYBWk8UDbGqIyD5P2hEncxsBAwWw1RZdWiftjvKiYlPjvSpJaAFWeyu4cZ%2F2F05xP652HzNmZGqXSrm7qj2fKjiS7D6TLei0doQKolSkKXVOWqrrMmBNzPv3%2FHFN2kgJMtbQ6QiQxNuEdgAJnQiIGisA9xMcUiuivTEnZ5q2EGWAeCuILqKK34PSApYADIBaq2sRgOvsBDlBW9RQ2gSSiPJBeloLpNL1I7PEpRqEhvJD74eWVNEaBfbfoMLnOD2idIEtK61wB4xsbCoE2WRVKWx1j3yIEvkOktzrIzbKs%3D%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/GHsAAeSw3uFp6s0w/s-l600.jpg"
+},{
+  "title": "1965 Topps - Rookie Stars Joe Morgan #16 (RC) HOF PSA 7",
+  "player": "Joe Morgan",
   "year": 1965,
   "set": "topps",
-  "grade": "9",
-  "ebay_price": 165.51,
-  "estimated_value": 2475,
-  "highest_sale": 2475,
-  "time_left": "10h 49m left (Today 04:00 PM)",
-  "ebay_url": "https://www.ebay.com/itm/327114503085?_skw=psa+-auto+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-sgc+-autograph+-signed&epid=6055970732&hash=item4c298b33ad%3Ag%3AGIEAAeSwzRxp3XSR&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xAB%2FKAtGlERcQgX5HTueS8d7lr2lHpFyePthPZfC4Yg5SN%2F4n5sjt6Kg8x82au4TXhXYptJqbUweq5%2FcUOWszU%2BQctTTMzKTiCSD32Tjx8BvHAEBibVBSwJM%2B1gaZoWmj9mMywJi5jeKsClqNKg41liDRfYpDMblHL%2FfAQmN%2FEbY%2B1P19SYprhOzTsOm9TylkFpRVsZ9um2tnxv1P3rYUIwhyolRCfJTXhUYB%2BO5O0UWPq0%2FyOxrra3FaZFfqx31N%2BNOp88t%2BVKo5j5ZkUXLWj6K4XaWUBQi5UZ5byLmV18NfqMdnMH15qC4BfrqqVX%2BhkS8a5kGt%2Bof3zkKo1XUU98%7Ctkp%3ABk9SR97L0O25Zw&LH_Auction=1",
-  "image_url": "https://i.ebayimg.com/images/g/GIEAAeSwzRxp3XSR/s-l140.jpg"
+  "grade": "PSA 7",
+  "ebay_price": 176.505,
+  "estimated_value": 416.245,
+  "highest_sale": 459.99,
+  "time_left": "1d 1h left (Thu, 06:00 PM)",
+  "ebay_url": "https://www.ebay.com/itm/137246053624?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=26055893179&hash=item1ff48094f8%3Ag%3A95sAAeSw5-9p583t&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xAb%2B9Pn0B8GgX0bDU9fXqyM8q78rPNS1WBWz5T9mESubgvY%2B%2FRnqPg%2FYPnU6cdPw4sM5yIDzRG9sqAUo55uRMcTa1HNVCQ11wpylrDZ6%2BgK1lsJG9VXpUj0vb4VRbWvhKseExuh4sjV3xwQ4UhOSr94RZWGadUMU7cC%2BT30Gz4vG%2BNGXfThs2aNBoZfkQEy%2BToCNDD%2Bdtc%2FyIFnGSqaRtyLeYYWoRzSao9gOlBP%2FJPsPki0Y9sITfdSj1YCCZe82OCfddBC9k14y8yHYevrk9TccGW71dqPBuH0rDHD%2Fw6BVQFnBAX2F4NGj8EhmMAfoZ0edmJ%2BntIqT7fmfqnNPF91%7Ctkp%3ABk9SR77J6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/95sAAeSw5-9p583t/s-l600.jpg"
 },{
-  "title": "1962 Topps Al Kaline #150a Tigers PSA 8",
-  "player": "Al Kaline",
+  "title": "1967 Topps #454 PSA 8 Juan Marichal Checklist - No Left Ear Variation - SCNW",
+  "player": "Juan Marichal",
+  "year": 1967,
+  "set": "topps",
+  "grade": "PSA 8",
+  "ebay_price": 157.502,
+  "estimated_value": 321.0933333,
+  "highest_sale": 437,
+  "time_left": "1d 2h left (Thu, 06:42 PM)",
+  "ebay_url": "https://www.ebay.com/itm/336549205381?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=5055905195&hash=item4e5be55585%3Ag%3ATYYAAeSwICVp6sIe&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xDC0t7bUPQ8WfDE06cSc2ZAx71KeWH0w9yaHNvu9M5dQmBtUoVZgclvOeqRgL0OvD3bdCifSzApJKSHifsX9hHnqpMZWhG4SyXc0KCES2BJfO8rbrLrtdRguNwT2wnSERnHuWZz0h73BWiMJezs4FvTtigz4xpGn50h3CZSh99l2aX%2BkcqQMH7CQAudWFH5NCJcK9yLHp56WHnIl5Jz5%2FQL28mjFexlKNvlSgHWFAx8w2pQLvWDHwvTdz395GNMBwXy%2Fk7OT4xS5H9%2F38%2F6vRxxxmlxckafK5PARWLuXgONCkT2nJYIsqQvd7sGIHQFpLzOBUomrq9P067U%2Fj0Rn6pl%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/TYYAAeSwICVp6sIe/s-l600.jpg"
+},{
+  "title": "1980 Topps Nolan Ryan #580 PSA 9 MINT HOF",
+  "player": "Nolan Ryan",
+  "year": 1980,
+  "set": "topps",
+  "grade": "PSA 9",
+  "ebay_price": 381.0017,
+  "estimated_value": 769.99,
+  "highest_sale": 950,
+  "time_left": "1d 2h left (Thu, 07:34 PM)",
+  "ebay_url": "https://www.ebay.com/itm/236771025908?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=13055895710&hash=item3720a723f4%3Ag%3APxoAAeSwQOlp6DDa&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xCFqzvVnEOwYBq9nRQETWTMDWfKZL2OtKZiDP8J8Ga6oiMMe8AaPTums2686sacKlrE0fOywRBu2BP31uOOiJy8wpn%2BRMiuZCdDy49HfS%2Bjf%2F1mD1b39JD0DSWiq6E%2B7AHEEtW730ucYQYOb1ia--kuqYkkqiL3dHAl5cH%2Be3%2B8eCKAoc1Cp6kAAmgsyBmdYv6UYiq11RBV%2BpNCzmmiSTrC3cB%2B2hTC%2F7h3gCSmfIN09wCgkKSUUH49YgggZhvu1RDV%2BzmjAbeWcUW9yE4KUAtThC4yR8QSrz9g0kmUfVXbcL37J%2BgkjZ8qEsLQZjYcO3aN2Xl4GpwCeF08uS%2BEIYpd%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/PxoAAeSwQOlp6DDa/s-l600.jpg"
+},{
+  "title": "1967 Topps - Rod Carew #569 (RC) High # HOF PSA 6",
+  "player": "Rod Carew",
+  "year": 1967,
+  "set": "topps",
+  "grade": "PSA 6",
+  "ebay_price": 311.0017,
+  "estimated_value": 644.9771429,
+  "highest_sale": 799,
+  "time_left": "1d 1h left (Thu, 06:15 PM)",
+  "ebay_url": "https://www.ebay.com/itm/137245995700?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=12055988345&hash=item1ff47fb2b4%3Ag%3AyOIAAeSwqZVp58pn&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xCQCQZBAVrN%2F%2BdakA%2BxUE4xCIm8aRsUfCIUladhWGT4zIu1b149%2FVKjc3iVXhFlVSw2VZwWek0jfkwbNCSmsGv2XQaUuWqwIKLHzvluMZr8EiQn2T5VT9xPMmCUUab4Ms2iKS9%2BmXukX2NuPqCsONb2FT2kvXII9gDh0u9%2Bu09LlqVJoY6oy%2BOJ7FFgENfewY7vWVu0MvqIKULDGJArzRM4vyTWKCSAA2LieLPcut%2FUocxs0QRFaV7%2FMNR0taGTyO2ls%2FjLs5UpuElxGH%2BtkG6F9lQyjU99vs5Hg1%2F%2BxyIuWGBQpL8MmrunzfAJa4m5voZ%2F7uy6PBKtxTJXMa4j8mQHt6KeZhdNzf28H00TyAfI3iQFZ%2FFx4KCm9ykYqjl1NBE%3D%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/yOIAAeSwqZVp58pn/s-l600.jpg"
+},{
+  "title": "1965 TOPPS #207 PETE ROSE PSA 5",
+  "player": "Pete Rose",
+  "year": 1965,
+  "set": "topps",
+  "grade": "PSA 5",
+  "ebay_price": 124.6017,
+  "estimated_value": 261.2475,
+  "highest_sale": 349.99,
+  "time_left": "1d 2h left (Thu, 07:16 PM)",
+  "ebay_url": "https://www.ebay.com/itm/206227123003?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&hash=item3004182b3b%3Ag%3AuGcAAeSwtppp6X6Z&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xB2TK%2B3h6qRPnj1US7B86x%2BVElngt4mSeQFqDo9xPASbjlBEpF9%2B3j49n5ouT90dZEXhMdBXpJRjgpQ0vmKc9Qq3Oa%2B8L0csHZ1W1Vv8KMnuRTNe5P400cNA0AxXE43J%2FS3%2BTcAysQarzftVShltny4%2FxK5b7eN%2Fh1NAcM4RRS7vunQFrE4NbfCNB1ZBtw%2BYQCDePete7wNakXWmlLb6SQMlB9epG2HAw%2BN6LsvdpF1g4ucwSGKBAg%2Ft9%2Fpi%2BPdgGiZoic3Z1jm2qnnCGoonakAT1MGwbmXw0OUzCHOd1UxesHIiTpo%2FcNCuo9N5vCFn98%2BNO2pAjFk4%2FMFISD7uulA%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/uGcAAeSwtppp6X6Z/s-l600.jpg"
+},{
+  "title": "1965 Topps - Steve Carlton (RC) #477 PSA 5 EX - Phillies/Cards HOF! 4,000 K club",
+  "player": "Steve Carlton",
+  "year": 1965,
+  "set": "topps",
+  "grade": "PSA 5",
+  "ebay_price": 110.507,
+  "estimated_value": 226.5928571,
+  "highest_sale": 265,
+  "time_left": "2d 1h left (Fri, 06:00 PM)",
+  "ebay_url": "https://www.ebay.com/itm/188313126985?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=2326948916&hash=item2bd8564849%3Ag%3Az7oAAeSw6SNp3ojx&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xBdx8x60BvPNSa3DsJfNTlJ0ZFFiirt%2FL4Agnqqh%2Bn2xQT1rE6CisZ0Pk1gO2CUyL62Wib04U0cTb3W6gzaqmbeMBfMDrvDbk8rbmNLCHeBYosh%2Fy4lPWOkpQcDSfzT0BU0kM8tSWtBSk7GMbnUZaC19jI99Ns5ENNhF0h%2FJqQN8whWfMCz5ST6QzGA%2B0ymKkENhB%2FXLqK110TSMaEraxuK%2FZBEaK0wnjp5ZnRc0GExATI0uTlXMHBt98nVZ6Vl4RtpzPQ9wrcg8ck0N7g4ObQSJECWTFpYHY3FR%2BtoOc12xpINvOB9lh4hggT8YRjscmu8lDW4NgVws6C65ZypCQDmHncVE4Yt8q%2Fp06xLBq64%2FspvwkkdQxnXwkwFVdfmkPQ%3D%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/z7oAAeSw6SNp3ojx/s-l600.jpg"
+},{
+  "title": "1985 Topps Roger Clemens RC #181 - PSA 10 GEM MT",
+  "player": "Roger Clemens",
+  "year": 1985,
+  "set": "topps",
+  "grade": "PSA 10",
+  "ebay_price": 1300.0017,
+  "estimated_value": 2418,
+  "highest_sale": 2504,
+  "time_left": "2d 1h left (Fri, 05:56 PM)",
+  "ebay_url": "https://www.ebay.com/itm/389933430856?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=16055991162&hash=item5ac9d7f848%3Ag%3APxAAAeSw63BpxD%7E-&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xALK9kUBcVEFCzP1%2BSc%2B6oFuzjpfHPXUDa8%2FNoMuntHqyeiR4F9QG4E5LyrjQnrl6cSSm5zkB3oI0Ls1Y9nrO8DqKPUyhdZ%2Bhu6yxSjrhw9Zss5zARrZN1zwaIoB0aK%2FNeyvDMRLzHiaslPWRe2SOm%2B2U7IwC7sHTZQnszWtxUuALQz8zccIw%2FQ%2B1iAcwrjzHkQt8k0h%2ByeJ%2F5C3q%2F3rEFSh8y6wLwz8UjXbg6exP2%2BRgXytd76y0XPgFhUdSmPZGaHuMkIEwCBOAJ7%2FKDBeHrCEupVrJ8%2F3hppie0aOa5k90aihBztMV7V43lDkknA2haWN8AT01fPxNcMm3kZahqVqZbaf7LoWvAHdNzsDeGScGSLnCYmfW8e%2FXh%2FOn1rDQY%3D%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/PxAAAeSw63BpxD~-/s-l600.jpg"
+},{
+  "title": "1987 TOPPS #320 BARRY BONDS COLLECTOR'S EDITION TIFFANY RC ROOKIE PSA 9",
+  "player": "Barry Bonds",
+  "year": 1987,
+  "set": "topps",
+  "grade": "PSA 9",
+  "ebay_price": 112.7312,
+  "estimated_value": 199.99,
+  "highest_sale": 199.99,
+  "time_left": "1d left (Thu, 05:07 PM)",
+  "ebay_url": "https://www.ebay.com/itm/206227119778?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&hash=item3004181ea2%3Ag%3AdxgAAeSwwv9p6X4O&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xDqBfbpubnGT4tJTf7BgUZdh3wJcr6aI4TC0qqOhQJlrcyDkHQ%2FMbu74iBaXtSGAPOi12YdeIs6LEX2b8dNMFHgo6tyzfSYh1WoKtWi1g%2FR691Er3Yd8Xz6de%2BYYXJ6EGRdfsPZlJNT%2BIKnB9ev2iN2tW9cBFJQnd90DwPZACdsa6QzepAKgkmKt7jrEtybS%2Fh5p9reMlpy6m%2BwN29ccIvYsNkt%2FEOFUQYn43ajm%2BpMaQOqhXp%2B3JaXdEvhhXzuBj1NMtx0JcRic7e3Ix0W9hZUsHzq9IeQBbN9XLf%2FYQ%2FkY%2FppSG3VmNFhT9Xk1dgr%2FX2ANveMOChK%2FJfkPcLelWxk%7Ctkp%3ABk9SR77J6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/dxgAAeSwwv9p6X4O/s-l600.jpg"
+},{
+  "title": "1989 Upper Deck - Star Rookie Randy Johnson #25 (RC) HOF PSA 10",
+  "player": "Randy Johnson",
+  "year": 1989,
+  "set": "upper deck",
+  "grade": "PSA 10",
+  "ebay_price": 115.5013,
+  "estimated_value": 196.7172093,
+  "highest_sale": 249.99,
+  "time_left": "1d 1h left (Thu, 06:00 PM)",
+  "ebay_url": "https://www.ebay.com/itm/137246098507?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=26055899038&hash=item1ff481444b%3Ag%3AoMQAAeSwvSpp58za&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xApvHrwL%2B3a0i6c51Mm5oV5MpwZIAfASvW49HZNVDARhhd34zceqrY0dILgU94ybEhH%2FLNI7SXHdRY29s2L14qpQe4rbOEB5n6B1cnIvaiF7MmwieHuChA50juMDO8BhJ9UShcenmKK902gE2XNTSiFbeRjUweFaKm91cisol0K9TEIapjwCsxUpMcfenNxGNiS9fIEsjVuiGRmrAHvS%2BMvqQ%2F6lo8D2KOOnVJb0Qegh%2BHhAa%2FEDFPgW1o3uIEZPMC3OQsdVgxkS54x90LeJD8jFD0Mof%2FmU%2B2vvD2MfiH6LujyHBxGbzusFANJG7AWS61nSJ4Q6H1bTCnCiybvIiJF%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/oMQAAeSwvSpp58za/s-l600.jpg"
+},{
+  "title": "MICKEY MANTLE WILLIE MAYS PSA 4 1962 TOPPS BASEBALL #18 MANAGERS DREAM",
+  "player": "Willie Mays",
   "year": 1962,
   "set": "topps",
-  "grade": "8",
-  "ebay_price": 202.51,
-  "estimated_value": 713.08,
-  "highest_sale": 849.99,
-  "time_left": "12h 36m left (Today 05:48 PM)",
-  "ebay_url": "https://www.ebay.com/itm/127824458543?_skw=psa+-auto+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-sgc+-autograph+-signed&epid=12055864069&hash=item1dc2ee732f%3Ag%3ADukAAeSw%7EF1p6Qf8&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xDIDMCiSYRGyuom4A8NXCimx1xLYUI%2BGKeDiNzhHOZjnNrfRpiCIkt9ru8WysDqfv9lsbIzh0IvcRUD%2FWYTpkX09ttzZqKp5xLwatvfI2wFYS75ckoCnLQ7zyKgbZB2WzWTPmQXERQL3Fr3VGtAbFsfxdTLzRXsYmYeFv7pq1q1vEHLvxNpvIpkQsV%2FZ501ocu72Mw9ZPxS0GOMW7gRAi3qKpxpj%2BfM7AVTnYX--dlD7ww2v6t%2B2TA3UpZZ6m%2FDg3QfJwc6C%2BexveamPWq34JhtvSbopmilOjq1XPUMpVxpkOdO9JZ2fV3K4S6Gb%2F1egu0Xmpzb--VtiFV6hS0P5814%7Ctkp%3ABk9SR-LL0O25Zw&LH_Auction=1",
-  "image_url": "https://i.ebayimg.com/images/g/DukAAeSw~F1p6Qf8/s-l140.jpg"
+  "grade": "PSA 4",
+  "ebay_price": 127.0518,
+  "estimated_value": 218.1111111,
+  "highest_sale": 249.95,
+  "time_left": "1d 2h left (Thu, 07:26 PM)",
+  "ebay_url": "https://www.ebay.com/itm/188309592701?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=19055871066&hash=item2bd8205a7d%3Ag%3AqugAAeSwKuRp6n4T&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xBfVJbOLhDpaJJShBSkZYgMCQq1OmdBRqbNJQaQR1ljf%2FQSyLwgDd0ZkoBA8V6U652uK%2BhcSyoKLwntluY08ZHsb2GUeGVX%2Fnm65kwi7Co5%2BxzhZyzPWmjtp6go8OxEiO8PoIpJb3GvpJobPn3XvmB4KO1GKUqQ%2BLTikK6L6Fhxf9Z2%2BXeR8N4mtS4idR0EQ45NwV5xpImLo4TXtS8tfS1XPfB6R9p44Yavy2Gjk%2BC3wMBgSC6oasAT8FxZmvhHy8%2By64QkpItQU04KD8qfwBAzw0t1eYGqYai4YDOuaIrVN73xHCm2QJDtB9uItNqgxAWV74kRAL8ymIQGOqBbS%2Fxx%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/qugAAeSwKuRp6n4T/s-l600.jpg"
 },{
-  "title": "1985 topps tiffany #401 mark mcgwire rc; team USA XRC glossy rookie PSA 8 -SP-",
+  "title": "1980 TOPPS #482 RICKEY HENDERSON ROOKIE RC PSA 8.5",
+  "player": "Rickey Henderson",
+  "year": 1980,
+  "set": "topps",
+  "grade": "PSA 8.5",
+  "ebay_price": 598.5221,
+  "estimated_value": 994.5,
+  "highest_sale": 1085,
+  "time_left": "1d 2h left (Thu, 06:50 PM)",
+  "ebay_url": "https://www.ebay.com/itm/306897204109?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=11055876351&hash=item47747fb38d%3Ag%3AahUAAeSwwatp6VsJ&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xDXn1NZdbUXD9fzrLejmjNSRICEarLW61BAXRzYYjx0M9BQF0XOa%2F%2BgD0S%2BLY%2F1vvm1nL2InREMAEY%2FrVE4yqKx3bLQgch9Qu6rYvewD9sT9sOR0PeEr10AkW9bDa%2BV53tRX4ckvPVSyCw14ZSHjTgMfkW2kccGqQaTkmxjnUBZph1hsWXMBhJLtx1mDI%2B5q8YqqvCt%2BZZtFXbnY3afx2GbECiT7fYDikhFdt9y3LAzZLL694aAfZ1UdORwTQEYCTIxj3BmGolzaEFW2TD%2BLTW3cPpzZ4ZNq37KY15s8YmEfbfGhQTXEm9eylx6wONWF820dljZufNtcEQO4WfQgIL4%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/ahUAAeSwwatp6VsJ/s-l600.jpg"
+},{
+  "title": "1987 TOPPS TRADED #70T GREG MADDUX RC CUBS HOF PSA 10",
+  "player": "Greg Maddux",
+  "year": 1987,
+  "set": "topps traded",
+  "grade": "PSA 10",
+  "ebay_price": 115.0012,
+  "estimated_value": 582.2685714,
+  "highest_sale": 1200,
+  "time_left": "1d left (Thu, 05:10 PM)",
+  "ebay_url": "https://www.ebay.com/itm/389929761782?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=4055957099&hash=item5ac99ffbf6%3Ag%3A1-oAAeSw0Idp6olv&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xCrT8H%2FhT6gL3vD%2B7C3W6OSyPsKb2RIURnYUnR2OvRMlQw5AT2EnfpJJJcp2%2FlfdbnWqtoWvNmHnMtXpr6TgMFwXfYJdReS%2FRRMWOGnmdznsCDNC4s17iABpPyPhT5wO%2FUAhdbBhQP5k%2FNiR8sMlJFVywRKZGKFzFOwOBHsyXIhpfp%2BuY5YtUEzaHzbcxZRaa06eTNkkR4BHARf56Utuecv%2FoYzFRr04IAjrFnqdvBe8zNe34zdUM2UIHvLEoVICqKLQVZUOQvRcNPV%2B2JzNtN9qpfO1ZxSogoiQdZkhcmn2fJJriI3tMwys45thgudlYZomdlUzcEXqnNOUnEq01V01YAdDQSboieVO5Y%2B5DsFB34YUHjZ4fsh%2FvD7uinsxrY%3D%7Ctkp%3ABk9SR77J6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/1-oAAeSw0Idp6olv/s-l600.jpg"
+},{
+  "title": "1960 Topps Sport Magazine Rookie Star Carl Yastrzemski #148 PSA 6 HOF",
+  "player": "Carl Yastrzemski",
+  "year": 1960,
+  "set": "topps",
+  "grade": "PSA 6",
+  "ebay_price": 265.0016,
+  "estimated_value": 448.608,
+  "highest_sale": 599.99,
+  "time_left": "1d left (Thu, 05:14 PM)",
+  "ebay_url": "https://www.ebay.com/itm/257469473346?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=3055984613&hash=item3bf2606242%3Ag%3ApCsAAeSweJZp6O3-&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xA27EX%2FkRW8GEqO5EK9cXfu2l%2B3TgCBWijQWs%2FXfiR5dTAVhtuQOBqZZbKcSeHhYi0F6Idyo2qoDnoNsx2s6EddRZQ9c%2FELRdAIz5KusGfUTu7JxWrV5uBoYIEIk%2BSeHiaVIN%2FzKrrUKBb8U%2BTzppO6sRszxV6AXT8hno0nzD0ibVZh0LpGUgPoOpdMK5%2BmEpxFu8H04I0plcS2AkmxTHAQi0YDHtC8IPidScqfWYpgOXRI%2BzOoeevGTKQqJ3C5lYhj0M9qGDiAJHyE7MpJ5wHvIqZnjoFyGotXJN2ZMc0Q%2FpJ11Phl4fgQ0j6%2FPE42bSjJtlAfLRPRSG5hRZkJ0rEM6gJG%2BQ8OlRf4%2F4AOWz85%2Bvm3GTDXxte%2FfgY%2BYJEGXuw%3D%7Ctkp%3ABk9SR77J6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/pCsAAeSweJZp6O3-/s-l600.jpg"
+},{
+  "title": "1969 TOPPS #260 REGGIE JACKSON ROOKIE RC PSA 4",
+  "player": "Reggie Jackson",
+  "year": 1969,
+  "set": "topps",
+  "grade": "PSA 4",
+  "ebay_price": 157.509,
+  "estimated_value": 282.8268,
+  "highest_sale": 470.78,
+  "time_left": "1d 1h left (Thu, 06:14 PM)",
+  "ebay_url": "https://www.ebay.com/itm/306896823416?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=17055890560&hash=item477479e478%3Ag%3AG%7E0AAeSwWz1p6RlU&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xBqkRDuYU%2BR6147bcIjp9uIChKl5DGqr0OrONqBam82j%2FOJJkSEwp7eVi0IxC%2FoNnL8U%2BvRStUwFxGZNuprk1PJRU4X0--tg%2BNxp5SvTXNDzK1KD9DTuQjes4cZ9TRz3ykIidUihRt0PT7%2Fg%2BNleYyYgeHU3u2hnthOCoE8uERtKqcQFTSfWdBN6qEAF2KApCIXg8fmSCE5m0xMnXcUMFdprseay6%2BCiZpmIT4Vk8S3Z13ojMwu0%2Bcrk7CKwAZPfZXHfsw4C10S4TAbi23%2BaKmYnpFCEaCiUdQvmD9JoCLpwNosV3NG4cZ8fgO4iGPQ0VTe7mhcA75jCSFOtWdBtlzx%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/G~0AAeSwWz1p6RlU/s-l600.jpg"
+},{
+  "title": "1966 Topps Mickey Mantle PSA 3.5 New York Yankees Baseball Card #50",
+  "player": "Mickey Mantle",
+  "year": 1966,
+  "set": "topps",
+  "grade": "PSA 3.5",
+  "ebay_price": 199.701,
+  "estimated_value": 308.355,
+  "highest_sale": 316.72,
+  "time_left": "1d 23h left (Fri, 03:42 PM)",
+  "ebay_url": "https://www.ebay.com/itm/157858826595?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=18055985017&hash=item24c11e8963%3Ag%3AH38AAeSw3w1p6%7EG2&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xB0HcW73htgO2%2FrjigLFja2pnFAz6rswJcDjrzkK8pYezZJEu5Z7lCzQHBaNQm9BW%2BA9Ca%2BMDQN259YEYJSp6SOJrqcmj1ZnxtFsMnKlQ6XOWpAk1L39x1%2B8JCTx2G9AeGDunbn46LfiOiP6y4eO2oZLKGmD75DA0qPvZHsscpreQ2tsTTVc44L9Em%2F0Hbbufhqy%2BFsASGgvihQ5i0gSOfR3FBK3DJD1cibY4tgKuBr9D5%2Fay6mtDe1uVJEDVj47GUh13%2BDPcKFxB6BwZSVqOi9ohAC6FBjDHas35D02rsK59WXdcsltYHsCK%2FAXcQYAnzrBDs9JACx2YgSSPJug%2BjA%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/H38AAeSw3w1p6~G2/s-l600.jpg"
+},{
+  "title": "1958 Topps Baseball Mickey Mantle #150 PSA 2 Good",
+  "player": "Mickey Mantle",
+  "year": 1958,
+  "set": "topps",
+  "grade": "PSA 2",
+  "ebay_price": 300.2014,
+  "estimated_value": 479.3333333,
+  "highest_sale": 685,
+  "time_left": "1d 1h left (Thu, 06:05 PM)",
+  "ebay_url": "https://www.ebay.com/itm/287289805555?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=4055889620&hash=item42e3ce8af3%3Ag%3AK38AAeSwl6Zp6jp-&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xDWMJj8Q3j%2FDw%2BxxXOwL1FBXZtscZjZ%2FLgMYyowqW6FKPXe%2Fq9GVh%2FBgZtL0%2FdV8Y33eleJiO53m7pH2c70jQiRMyssCdPxIXLdiRt2xXoTavj7mq0gY0VxvRJSChj8g0%2B2LlOPvZ%2FrYFabT5QKGdI1gPysWfKUrATS46BRcVULBwxva5nHlgvhmohsPhCc1Nn1jPGuz6o0tQ1lcI6kuTIz6WtCuVK368DXkjmT9fU1Aij4c8r1Dnm1kFtYE6%2BYbD02Jz5nU2g27zhepiOH7%2ByN5U5hMkXoFWpdQ5IEs1Mfv1DAx6nLzLr7AgLTEnOBPvNlgC3WtBglSXxzLCdvb5TvVRLvMqeYYjlMX%2BJ2ATG%2FtjewZDjyjDbk7RwP%2FQhzlRQ%3D%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/K38AAeSwl6Zp6jp-/s-l600.jpg"
+},{
+  "title": "1987 Topps Tiffany Baseball #320 Barry Bonds PSA 9 Rookie Card",
+  "player": "Barry Bonds",
+  "year": 1987,
+  "set": "topps tiffany",
+  "grade": "PSA 9",
+  "ebay_price": 213.508,
+  "estimated_value": 319.6631579,
+  "highest_sale": 375,
+  "time_left": "2d left (Fri, 05:25 PM)",
+  "ebay_url": "https://www.ebay.com/itm/287286468421?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=22055905968&hash=item42e39b9f45%3Ag%3A%7EqsAAeSw77xp6BTp&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xCNBF6W3Sxr%2BHu8AeGGMLtPtG5zhYsEL0rDShGFycCE2bo13m0j8LchgfPHX6sUvyaX4zN%2Frf8vb8AydLjwuSnUy0xZywPESmxRxPo%2F5zwHMcGpzrChRczwx72Au2XWEhnpDcZiOpRLQByE3ybh2mgGb42M2yd%2BftcM5EJ4P7XOD6FAATuTFxZ5Df8kUryex96zHhOYBu4Tp90yBQ%2Fxub%2F4PNeohxfFgYu9qNcr5uv%2B4Gk3KrPeT4SY2LqxL95V11rC4ks%2Fx2QZ8LqVwHqiF6zBNqeDlW3RG8Bo5Kh2zI47NmCq2D2Fpvt5Qg%2FGmcUWc7%2B%2B1JpFEAfAznu9giZ4E2%2BQ%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/~qsAAeSw77xp6BTp/s-l600.jpg"
+},{
+  "title": "1975 TOPPS #660 HANK AARON PSA 8",
+  "player": "Hank Aaron",
+  "year": 1975,
+  "set": "topps",
+  "grade": "PSA 8",
+  "ebay_price": 320.0025,
+  "estimated_value": 474.975,
+  "highest_sale": 550,
+  "time_left": "1d 2h left (Thu, 07:00 PM)",
+  "ebay_url": "https://www.ebay.com/itm/298252914106?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=6055904134&hash=item4571424dba%3Ag%3APkQAAeSwhS1p6O8Y&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xC8onNiSL5U9jDzr98dmWO23RLv91O%2B%2FPbt15IBo%2BlWx1eTWZQoTAfwiy6OH6yW2dVLzAK163vqvEQY4MDb9tlfmrE0YG7PTqKw5AnlCdznF0aiCd3exOaRwQsLOLn7C0lzt5mtdJ%2BMyda5LejF8KFw3YYH5lGr0d8gVvwV8PQspVtpH1QzAl1m6TwT8M6GTsxSwlv9Rt305cmknYedsyJeyBpzZ9jpzmk8h9FOkppm9V8LBX70oSnsnc5zvi%2BsRYPFsY3HfPO%2BXNY4VPoOz%2Bf5WI9y7c0ZUT4PMMvLD0eb1oaubGR7ADI3A7fBxJfkEpoTYr91Zl5rnBTsfK9PFHFwOuDATYlYQLGG0J1qrGQG28rc8PBCnGD7EfVhwqBC2No%3D%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/PkQAAeSwhS1p6O8Y/s-l600.jpg"
+},{
+  "title": "1982 Topps Traded Cal Ripken Jr. #98T PSA 7",
+  "player": "Cal Ripken Jr.",
+  "year": 1982,
+  "set": "topps traded",
+  "grade": "PSA 7",
+  "ebay_price": 118.507,
+  "estimated_value": 180.7475,
+  "highest_sale": 205,
+  "time_left": "2d 1h left (Fri, 06:00 PM)",
+  "ebay_url": "https://www.ebay.com/itm/117161236344?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=10055957254&hash=item1b475a9778%3Ag%3ABJ8AAeSwUbhp6A2d&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xBzfBXbneWGqVK0cvr07vXICMvr%2Fz%2F9JgeoijTBGL3kLoV%2FMrWEhq4ZvgmMm4QE8OsjtLlsm9iORtS118H5Ptx%2Facui5gkcEN6RQ1%2FZVtd%2FsaE2liWY2ZKqy76bri6lIgw2BBe%2By7%2FqazbnZGLakA3kDfCE173fxNZAkkgoMTefeEXo3Vkw%2BVYLhv4YV8DV0cKHL02Z7AtX9tojzecTo3JhcTYX3C5mbx7LSd5CHr56uNWbF88Lvxg4mY8lmJ72dAYXD4ffYbPcWnWvqx0XBiBaNWYDj%2FfvqkpDZ6p5BzLYTjnVNoTyz3VsSN5pXsZ9MgMgfjL1M5bsgXDddkVaCJw3%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/BJ8AAeSwUbhp6A2d/s-l600.jpg"
+},{
+  "title": "1958 Topps - Roger Maris #47 (RC) HOME RUN CHAMP Centered! PSA 5",
+  "player": "Roger Maris",
+  "year": 1958,
+  "set": "topps",
+  "grade": "PSA 5",
+  "ebay_price": 315.0015,
+  "estimated_value": 479.4214286,
+  "highest_sale": 649.88,
+  "time_left": "1d 1h left (Thu, 06:00 PM)",
+  "ebay_url": "https://www.ebay.com/itm/137246020252?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=13055914947&hash=item1ff480129c%3Ag%3AcEAAAeSwvsRp585H&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xAEOlbq%2FNXfo%2BpKUlqxVKvEcWdBTwHuY9fwOS8bbRDaXsBLbrbaZkmos%2FtmctellJ7RDqgE9Zp5XR3sL0YEnNPqbsyY9aK9XsBXTkNGOQG5mMbkqn5gPJSxa%2FHuxZ7%2BKvRxuM71dA%2BF%2BW4HpDDkB0K2O0j6r0aCVSY2knUW%2BBU1A0A7zGGGFtmij1WWbTQJRKmKns2t9Inpta9ANU4Ph5v%2FZh%2FbHl%2F0DOxmgwGTYrGyaNGRK7JghopZyqsxnF6Hnl4K4GVOe7lFA5WzOBFSUGb35jsJeNYSpoTCM3FrIPrMovdhCoy2Mj3PTfdwnrobj8I17cAOUV76P4YjGP0eb2J%2BRbeWJu1KorkjlXArVBeLQqf1am1bxC%2FU7LiJsBgD270%3D%7Ctkp%3ABk9SR77J6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/cEAAAeSwvsRp585H/s-l600.jpg"
+},{
+  "title": "1957 Topps Set-Break # 10 Willie Mays PSA 5 EX Beautiful",
+  "player": "Willie Mays",
+  "year": 1957,
+  "set": "topps",
+  "grade": "PSA 5",
+  "ebay_price": 302.0025,
+  "estimated_value": 460.63,
+  "highest_sale": 650,
+  "time_left": "2d 2h left (Fri, 06:50 PM)",
+  "ebay_url": "https://www.ebay.com/itm/137259438043?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=25055878371&hash=item1ff54ccfdb%3Ag%3AqMMAAeSw69Jp7qje&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xCfLP6%2B4cAMmVN36N2XRC4oxDJ1vonbbi7D9U2JXHSCQ4rYdu6uHX5k3Bn4FvZ2vk00YF50iqV5vxbl3oS8tyG21YiR7cNNqHlUGJ0I%2BqNadLnO1AyECJtLfbK2oUzqNMxOP0ORxYIe1HOdGUmsLW%2Fj5UXeEI9BNsDGP%2FLVW6oqntneHzBR96GWSQsI%2FghGMs6um9o4WnYP8dpsAI0rcRZw82ScD6B23BEVp2SHnIpuNHisG0wnyh4B99fC1blFsnnoELN5FUGMuYyY3zsfMKojiLV%2FCzD7gkeT%2FRjvL5vVi38OkVSMV4am%2B17TUO%2FXxnavNDDPaTzCxS4VpnTp%2F6NI%7Ctkp%3ABk9SR8TJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/qMMAAeSw69Jp7qje/s-l600.jpg"
+},{
+  "title": "Nolan Ryan 1984 Topps Tiffany #470 PSA 9 HOF Low Pop 252 Only 7k Sets Made",
+  "player": "Nolan Ryan",
+  "year": 1984,
+  "set": "topps tiffany",
+  "grade": "PSA 9",
+  "ebay_price": 170.0016,
+  "estimated_value": 234.9,
+  "highest_sale": 274,
+  "time_left": "1d 2h left (Thu, 06:41 PM)",
+  "ebay_url": "https://www.ebay.com/itm/147268343328?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=10055911967&hash=item2249e09620%3Ag%3Ack8AAeSwpHRp5cI7&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xDY6%2Fuw%2FbcH%2BAptlcfMFPfVf%2BiepbWyOqLkMC1HgPJO7sBCjfToqGmkDxlvfu7y1KwyehbB58Xi16OVXAy2cnte5IQekyJ9TMnQEj5GwU0Kta6lUBeh5eK9G7NXHljtEXHppI9yTC7eWfSGOSkCHGzS5h3eQ3nc%2Fa7XHZKlMoNnPVDM%2FVlsmyxGxqMBb4%2BdjOduQhENOj9%2FAdL4LgC3alZrFCS0Yy4PYy6FRJPsB%2F0lEeMN2oxYSSpZ0pTzrBElHgnfXJiO2P6eOHd4KNd55w9jJSqIZ8rj4Dca3UOmO%2FPiv2cIyyBSwXkK%2BApRaRL23ZRPHtyY9L8ldLHuzlRC9M2B37wD8%2BwdgESTMktnYT7qQiSigt9meLqb278HzbM85qg%3D%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/ck8AAeSwpHRp5cI7/s-l600.jpg"
+},{
+  "title": "1973 Topps Willie Mays PSA 8 #305 HOF GOAT GIANTS METS FREE SHIPPING",
+  "player": "Willie Mays",
+  "year": 1973,
+  "set": "topps",
+  "grade": "PSA 8",
+  "ebay_price": 225.002,
+  "estimated_value": 335.1666667,
+  "highest_sale": 399.95,
+  "time_left": "2d 1h left (Fri, 06:04 PM)",
+  "ebay_url": "https://www.ebay.com/itm/298254879004?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=10055962876&hash=item457160491c%3Ag%3AyUcAAeSwtppp6ajZ&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xBHkZAb3PRno9yLO0S99vxnXlmn8uMwwdTVeJZuOSi0keCfGbnh3WlU%2B%2Bh0597k8J70pmggDi721RoHhnjh4RHe5wBSeTJDca5XWhl61sVkLHpyIhIKe%2Ff1zm54aFrnF49cxque6zvIAaRPw5jB9WZsqwfaqY6%2FfytcuTc7AogIulacaDUIxDs94S4JbNz8Tk6uJsT64lEQGdCmryom4uEGMRxNiievnYDuba7DpVwYFk29BvWcn%2FQTjxIMhSLwPKiCHIX36daFSdaa0kN1HVo6UH7Q7QIVKSjDyqua6cVGJat08cyL9QvW8h8wnOf%2B7JSxZEpBNfs%2FCDYHhZw7CEp8%7Ctkp%3ABk9SR8TJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/yUcAAeSwtppp6ajZ/s-l600.jpg"
+},{
+  "title": "1955 Topps - Ted Williams #2 PSA 4",
+  "player": "Ted Williams",
+  "year": 1955,
+  "set": "topps",
+  "grade": "PSA 4",
+  "ebay_price": 315.002,
+  "estimated_value": 442.86875,
+  "highest_sale": 475,
+  "time_left": "1d 15h left (Fri, 07:48 AM)",
+  "ebay_url": "https://www.ebay.com/itm/377138811056?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=20055871748&hash=item57cf3990b0%3Ag%3A9vMAAeSwoJhp64JU&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xBVQJkRHdSixOsBdd4KtckrHhVIsTAe9HNCvbjQHa%2F%2BAEiJFyvr05%2Fs8u1ePxkYMnikunsW2KWtLI1HS8c%2B0IGGaoidwNz59qw0dF9jmmYbNtejdAWVDsz2TdrjQF%2BoK1fKk4VAoVNfyfPqEKr%2BLnFzpeRr3dQzV9Mgtez1B0KI1ehuE%2BMORnuYFzaF6HoNLUgnHRetUzslpLYaoet%2Bnjecbo4%2B6Up4BmlAL5BwvMxY%2FTR2QIrvnRFj4LegJXUw2u9tFL5UlUWyBE47FEh01RdGl5PynIabAGfaPlhztpZWHeAPFSVxSnipuZp0EEMrXlSQGTXo3BLctPuq2PW%2FwbVv%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/9vMAAeSwoJhp64JU/s-l600.jpg"
+},{
+  "title": "1967 Topps #475 Jim Palmer PSA 8 NM-MT Baltimore Orioles",
+  "player": "Jim Palmer",
+  "year": 1967,
+  "set": "topps",
+  "grade": "PSA 8",
+  "ebay_price": 195.5024,
+  "estimated_value": 264.995,
+  "highest_sale": 290,
+  "time_left": "1d 1h left (Thu, 06:00 PM)",
+  "ebay_url": "https://www.ebay.com/itm/178073846630?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=20055987915&hash=item2976074366%3Ag%3A2rkAAeSw9yVp6qO7&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xDJLdUeoqmzn2idldP3nldpe526puDb48Zjn6vs8g4bO4WLxD8PunXLNi%2Bam0xw8%2FQG%2FZKCYdASX4RSQLAfGF0HLTnkJKeaAQccxZD%2BmZgL8Rlt1yKaAPdI42K2uIWpasa5hY4e3jcoHDuD0g%2Fx3BSFjwAH4vKWcaYhN9sAuSJxaN%2FgT76dMrK7pNfurNyC%2BlD3DvO6Unl%2B6d5rTxDcWyn0TMnJQVjkyvAw4HRKFEbt6mMOqlHkDHeL7%2FCd7EJvd3OsWyv4RRTWEfulslepfPv119ht%2Fjr4DiMi52RU443LoyPXR89L4eXppUyUa%2FIBTCWvVsVdeGnFqfRXHoMPs8%2Bz%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/2rkAAeSw9yVp6qO7/s-l600.jpg"
+},{
+  "title": "1965 Topps #16 Astros Rookies w/ Joe Morgan RC Rookie HOF PSA 8 NM-MT",
+  "player": "Joe Morgan",
+  "year": 1965,
+  "set": "topps",
+  "grade": "PSA 8",
+  "ebay_price": 810.0024,
+  "estimated_value": 1058.055,
+  "highest_sale": 1206.11,
+  "time_left": "1d 2h left (Thu, 07:00 PM)",
+  "ebay_url": "https://www.ebay.com/itm/389928738215?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=26055893179&hash=item5ac9905da7%3Ag%3A7skAAeSwPw9p6jNo&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xDa94mr4gOkD5f4g0JSnVpw8yo1UhYR2C74iGjTtb5JedBy563%2BLmLjHsV4Ub7cY7bP62%2FqaXW%2FGGzyJTkPPwxxpmjyun%2BL4xTP%2FgCGTIDPxBe0WeTQ83LYr8x8uJ97V4ZlUZ%2FGeuCr4oSY%2BjkCui86h%2FIHGIzEzARJ00ikuZsF1gTIs9uxQyMdKJh5kiYO6JQQKwSE3Xbzvm8A%2Fm3upotG33Bay0%2BYBXICuqzX2EgKFJgySTEpPEAm04p0tqaDpORbToidTViB9gvJOxWZZkkdgsFtZmysqO1Tl%2B0n9PpiwQR4OTTs0ofUEJFhIRBC%2Fi%2BukE8WUyx9yoILvmsIEN0M%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/7skAAeSwPw9p6jNo/s-l600.jpg"
+},{
+  "title": "1985 Topps - Mark McGwire #401 OLYMPICS (RC) PSA 9",
   "player": "Mark McGwire",
   "year": 1985,
+  "set": "topps",
+  "grade": "PSA 9",
+  "ebay_price": 140.0022,
+  "estimated_value": 184.628125,
+  "highest_sale": 290,
+  "time_left": "1d 1h left (Thu, 06:00 PM)",
+  "ebay_url": "https://www.ebay.com/itm/137246118071?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=22055878939&hash=item1ff48190b7%3Ag%3Aq4sAAeSw%7E9Bp58xr&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xADK09G7A1XYLhSY8C9BliVG7VOM%2BJDsz3CsmgtUh79r18PNqmEGUWiHkyTKPb4BxgTyu%2FVof8LOYQO%2F6eUjhsdGixjict44WDYUC7oCU0%2FWx8vmH70NslgPlFqfrrpzRIONY%2BLnwrbl3QZrMXhfoL9HeqHsTeE2pycaEShKX8AGQ%2F8Q%2BAEiPnTctWwnpFdqGpN%2FV%2FWASZ%2BnUHUMjiqVCWtNyhTOt1Gb%2FZtOsI25R2pszkEqc%2FWWpeIPwC7XY7e1kYPwTEhXqIPQFuOnhTGrnw7QRYGOYeO1tao9l3lyx8l1NCZiIo7aH%2FGjG%2FLww8MHincoEqPF5hUMRq11Wq8QTKH%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/q4sAAeSw~9Bp58xr/s-l600.jpg"
+},{
+  "title": "1976 Topps #240 Pete Rose Cincinnati Reds PSA 8 NM-MT",
+  "player": "Pete Rose",
+  "year": 1976,
+  "set": "topps",
+  "grade": "PSA 8",
+  "ebay_price": 184.5014,
+  "estimated_value": 241.8811111,
+  "highest_sale": 278.25,
+  "time_left": "1d 2h left (Thu, 07:13 PM)",
+  "ebay_url": "https://www.ebay.com/itm/377137074903?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=14055965694&hash=item57cf1f12d7%3Ag%3AtGAAAeSwTpVp6pD2&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xB%2BX6DAsCMd67YOnOqYW45CIx55x1YmZmax0oC7LIeYuI1Zujp1HMKFAGGcmMGOxLQGezNEsi58ZAoaionaA%2Bn8bWiYm0UdFz6P%2FcdnkgykTmlfVWB1nIxsEaulM3ZYpVrh6tJbcVGr1tzs63OXRTAxMJvrg%2Bv1zNFf5o41DrCVZUH%2BetGLvm9Pc3DMsPVsivDV%2FiokFTTvQMbesYsDDlNfSkR4bOfD4Cdi1QMCXhoG5xEqTc%2Bk208xfDB157UaZa5JN3%2FUD4AdrAGDrU9YmsasLG0JxcUAh4oR3hg%2ByzIRruRx%2BndnjHb4nDsIN3VbXjRSWB25zI6iO4Es5LvzVJXv%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/tGAAAeSwTpVp6pD2/s-l600.jpg"
+},{
+  "title": "Ryne Sandberg 1984 Topps Tiffany #596 PSA 9 Cubs HOF Low Pop 188 Only 7k Sets",
+  "player": "Ryne Sandberg",
+  "year": 1984,
   "set": "topps tiffany",
-  "grade": "8",
-  "ebay_price": 148.50,
-  "estimated_value": 448.5430769,
-  "highest_sale": 599.99,
-  "time_left": "12h 53m left (Today 06:05 PM)",
-  "ebay_url": "https://www.ebay.com/itm/406862483352?_skw=psa+-auto+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-sgc+-autograph+-signed&epid=24055982305&hash=item5ebae4cf98%3Ag%3AR8MAAeSw13Zp4VOE&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xDYqH5UkdLs3Zwo5pNbRykIa2fgISxHnM9xc7DozmB3zk4ECojWypSEwe%2B7BbbhNjC0Xy%2B%2BbN7bpPLRkQVg8DlcAInUQ7MgchfVQzcta4qsuCF8PAxTADBL7D8gH61hfUy%2BLEeiKn88JggDKmDApVZWpCb0iyXkRWxAsc3DpL9cbdlAlbCblN%2B9DjNtS4VO2mk0zOXSQKw%2FweMTPwjIsA9SpE0SDOdhx4uAoBf1FaY8G8GWubXHUcf2yrCHyMDKA56ftXsVtOJDRI2a%2BqqITiLUfZTYflfKix8N3UtlOikwo8rwAsuuQ9fPmCoGqDMi%2FtIjf7VVceT1%2Bupy3%2F0d6hum8VKFKjHdGqcRYUGk9oxbXx43QsYnXarVMvbulPFuSR4%3D%7Ctkp%3ABk9SR-LL0O25Zw&LH_Auction=1",
-  "image_url": "https://i.ebayimg.com/images/g/R8MAAeSw13Zp4VOE/s-l140.jpg"
+  "grade": "PSA 9",
+  "ebay_price": 132.5021,
+  "estimated_value": 163.275,
+  "highest_sale": 174,
+  "time_left": "1d 2h left (Thu, 06:45 PM)",
+  "ebay_url": "https://www.ebay.com/itm/147268348243?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=5055991570&hash=item2249e0a953%3Ag%3AVRYAAeSw0rNp5cRz&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xBP9z3oxVo6GKal%2FtPsZrldQxEg%2FaBw4tuDO66EVxlvrQzKa9JZHR6zUaOEFwtrFS2qXuzHfS9fU8sMuvJxqLjyt3FMRRf%2F1%2Fzfq5qAr%2BTjKbHX6aXxrM2USZ13aGegcdmu1b%2FY9pXjrPVTK0mI874mcl--SmjNASZteQ3wbU6oNnkAZ6D8ELbbutVry31gyTxgzcGWBhXwlsAwsrKEstC8zD9IwJAFsoCZOwIhDthbPIuAoylNz%2FCqilr4YK1Lo89I%2FQms0BtBhT%2BREiknLpjMzh0UonOY7WBBWXSBimnVhQT7ReuZkfunpbXnxXqRi8HRnUun4yLBTQZNicxMjOeTUPbdHXCm8FK51YNi5ANMCmC5Td%2BTZkJBTltRNwcdxy8%3D%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/VRYAAeSw0rNp5cRz/s-l600.jpg"
 },{
-  "title": "1969 Topps Set-Break # 95 Johnny Bench All-Star Rookie PSA 6 EX-MT",
+  "title": "1976 Topps #300 Johnny Bench Cincinnati Reds HOF PSA 8 NM-MT",
   "player": "Johnny Bench",
-  "year": 1969,
+  "year": 1976,
   "set": "topps",
-  "grade": "6",
-  "ebay_price": 185.00,
-  "estimated_value": 368.4225,
-  "highest_sale": 521,
-  "time_left": "12h 25m left (Today 05:37 PM)",
-  "ebay_url": "https://www.ebay.com/itm/327108656068?_skw=psa+-auto+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-sgc+-autograph+-signed&epid=13055873205&hash=item4c2931fbc4%3Ag%3AEaYAAeSwQI1p4nkK&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xAMzgMY7JI8AYYKvevyE5QynklVbAfwKgPPYVIbqQH%2BCuljSY5fPML91lW7L%2B0S1I%2FxTaPf0bSoGF0f1JTMvNALK6ONl4eYMlFFK%2B5F95ox3iQokbuognPIDqebiOlHJ3fHlkLnU7uC%2FHp4MeJDUiZN6Jp39iVM%2BrOZ0qLQ7u29Ndbg2EbvlgO3qH%2BgVwHChXxhKO3fan3CHylI%2F%2BtD6OKegl8kB7ku0A73RKByxJzef%2BMEU9EMo0THb2M5PWfdVKXZXjjqwgN4CLzU%2F89TwG%2BumrzWhRiwStidG6F1MxMre0PugGuuGh00UCJkAe4DZq7LNDQeve6fMz0jL%2FSmqCzP%7Ctkp%3ABk9SR-DL0O25Zw&LH_Auction=1",
-  "image_url": "https://i.ebayimg.com/images/g/EaYAAeSwQI1p4nkK/s-l140.jpg"
+  "grade": "PSA 8",
+  "ebay_price": 149.5021,
+  "estimated_value": 181.132,
+  "highest_sale": 203,
+  "time_left": "1d 2h left (Thu, 07:13 PM)",
+  "ebay_url": "https://www.ebay.com/itm/389929851885?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=16055965435&hash=item5ac9a15bed%3Ag%3A4UkAAeSwHUxp6pEn&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xCO5R75TP%2B1sZP5Lps5xi71WvvkFjagTYYQrIbKUlpirsEQ%2FbalxGPr4vhbgHfXImfpHypqKrNE6Rgvsr3ILGtSl2O8UBw8KCadii3yrDOGDU1IT6Q3ogr2SiM704jo12Unn%2FBNxeyBsR6f4li793ws5Jb48kcHcKcWcLBnDzeogAwMmloUvO5eiDO%2BXgueyaf8M5vKNvtuElzQ9qfSbgRj%2BJLLQAiGxIvmjmjguGYVJd%2BV%2Bbs7WC8GP%2FmnXaZY8yJTTEKFyNOdVnf8g%2FzLIZQnkuKZzV3AumLf3d5KfLn3hkvO6QEw7q%2FKODCrQl7b4RA%2BV%2BsuOJOTE1cC9NhymcYZG2%2BAkfHv9caPVshshdd04UxTxElKa56B7NmyZDQWkVE%3D%7Ctkp%3ABk9SR8LJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/4UkAAeSwHUxp6pEn/s-l600.jpg"
 },{
-  "title": "1969 Topps Set-Break # 95 Johnny Bench All-Star Rookie PSA 6 EX-MT",
-  "player": "Johnny Bench",
-  "year": 1969,
+  "title": "1962 Topps #25 Ernie Banks Chicago Cubs HOF PSA 8 NM-MT",
+  "player": "Ernie Banks",
+  "year": 1962,
   "set": "topps",
-  "grade": "6",
-  "ebay_price": 203.50,
-  "estimated_value": 368.4225,
-  "highest_sale": 521,
-  "time_left": "12h 25m left (Today 05:36 PM)",
-  "ebay_url": "https://www.ebay.com/itm/327108656069?_skw=psa+-auto+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-sgc+-autograph+-signed&epid=13055873205&hash=item4c2931fbc5%3Ag%3A-ZMAAeSwZQpp4nkK&itmprp=enc%3AAQALAAABEGfYFPkwiKCW4ZNSs2u11xATxDAU%2FaUdHtYvE8DS8Fb4jjCCkjeJbQ7JNEIMxzm4FvZppP%2FX9PJHyH37BVwWs%2B68uADfBAU7Mijbn5dGhYmVPaXjBonvGoCJndRep2nNjeDOq5WgJ1JAe%2BqLCVO1pl2dt6j0jl8ekOnwW33S55kUKdaAathL%2FqExEjcLXDCkDfCb01tNZxGS5ouVrBE8qEpnDHfmmG24dqQDRUnuFsYZRQ5pGFhK8jG8B5yBBeBYzb3vSxA1KWPiK8AnGUJx7xRAVIkajqf9Z23lDKLnxhLk2D9FCmLKbOrb8CW5hfrnlx7L2Rw4UWfv5XxlSmtAko8c%2F9udv26l4II0nilYZ16r%7Ctkp%3ABk9SR-DL0O25Zw&LH_Auction=1",
-  "image_url": "https://i.ebayimg.com/images/g/-ZMAAeSwZQpp4nkK/s-l140.jpg"
+  "grade": "PSA 8",
+  "ebay_price": 565.0031,
+  "estimated_value": 652.8366667,
+  "highest_sale": 776,
+  "time_left": "1d 2h left (Thu, 07:00 PM)",
+  "ebay_url": "https://www.ebay.com/itm/377136412087?_skw=psa+-auto+-o%2Fc+-oc+-mc+-2018+-2024+-2017+-2023+-2022+-mk+-lot+-autograph+-signed&epid=22055903882&hash=item57cf14f5b7%3Ag%3ATgMAAeSwzp1p6jNB&itmprp=enc%3AAQALAAABMGfYFPkwiKCW4ZNSs2u11xAYNVO%2FcEDczXjeGTj2QvA2ibEBIGWTRSxQxdiPk9X7zMytdWOwk0kA3HCaD7Vmr8hMdrBIcmWwvJ6HMN6SdnB51tIhVQ5AYsM06ECagW%2Bb7afC436ojEU%2BybO3xWJsd5DMNf9vmEDApX94pmuFZwuP7LdNZD3RMiI3%2F%2BiipuR1ScSxcEvz4Bb8BdT14c0WtV4%2BFQxKK%2B9Zrl3lnYKh1Pc6kGiM4e2Hkby0k3oMFBpTbwa4FDxUOoV8Xu%2FrWyeSOQZvQL88R5r%2FMvMS%2FsfoCllLJOl3TXSMFfZsijnM%2FmY2WIp%2FDZliXFWen3lgHQDuDJIeVA33u%2BSdsdEOQ3AAoTXJlrZt9k9u%2FmEbsKknh34mzYbZ2WJvRCZN%2BVuU8OjnjdA%3D%7Ctkp%3ABk9SR8DJ6bm7Zw&LH_Auction=1",
+  "image_url": "https://i.ebayimg.com/images/g/TgMAAeSwzp1p6jNB/s-l600.jpg"
 }
   ]
 };
+</script>
 
-    const searchInput = document.getElementById('searchInput');
+<script>
+
+const searchInput = document.getElementById('searchInput');
     const gradeFilter = document.getElementById('gradeFilter');
     const sortSelect = document.getElementById('sortSelect');
     const dealFilter = document.getElementById('dealFilter');
